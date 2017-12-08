@@ -42,6 +42,7 @@
  **************************************************************************************/
 
 #include "coder.h"
+#include <pgmspace.h>
 
 /* helper macros - see comments in hufftabs.c about the format of the huffman tables */
 #define GetMaxbits(x)   ((int)( (((unsigned short)(x)) >>  0) & 0x000f))
@@ -120,7 +121,7 @@ static int DecodeHuffmanPairs(int *xy, int nVals, int tabIdx, int bitsLeft, unsi
 		return 0;
 	} else if (tabType == oneShot) {
 		/* single lookup, no escapes */
-		maxBits = GetMaxbits(tBase[0]);
+		maxBits = GetMaxbits(pgm_read_word(&tBase[0]));
 		tBase++;
 		padBits = 0;
 		while (nVals > 0) {
@@ -146,7 +147,7 @@ static int DecodeHuffmanPairs(int *xy, int nVals, int tabIdx, int bitsLeft, unsi
 
 			/* largest maxBits = 9, plus 2 for sign bits, so make sure cache has at least 11 bits */
 			while (nVals > 0 && cachedBits >= 11 ) {
-				cw = tBase[cache >> (32 - maxBits)];
+				cw = pgm_read_word(&tBase[cache >> (32 - maxBits)]);
 				len = GetHLen(cw);
 				cachedBits -= len;
 				cache <<= len;
@@ -191,8 +192,8 @@ static int DecodeHuffmanPairs(int *xy, int nVals, int tabIdx, int bitsLeft, unsi
 
 			/* largest maxBits = 9, plus 2 for sign bits, so make sure cache has at least 11 bits */
 			while (nVals > 0 && cachedBits >= 11 ) {
-				maxBits = GetMaxbits(tCurr[0]);
-				cw = tCurr[(cache >> (32 - maxBits)) + 1];
+				maxBits = GetMaxbits(pgm_read_word(&tCurr[0]));
+				cw = pgm_read_word(&tCurr[(cache >> (32 - maxBits)) + 1]);
 				len = GetHLen(cw);
 				if (!len) {
 					cachedBits -= maxBits;

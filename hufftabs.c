@@ -75,7 +75,7 @@
 /* store Huffman codes as one big table plus table of offsets, since some platforms
  *   don't properly support table-of-tables (table of pointers to other const tables)
  */
-const unsigned int /*short*/ huffTable[] PROGMEM = {
+const unsigned short huffTable[] PROGMEM = {
 	/* huffTable01[9] */
 	0xf003, 0x3112, 0x3101, 0x2011, 0x2011, 0x1000, 0x1000, 0x1000, 
 	0x1000, 

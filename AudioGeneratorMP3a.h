@@ -45,7 +45,7 @@ class AudioGeneratorMP3a : public AudioGenerator
     bool FillBufferWithValidFrame(); // Read until we get a valid syncword and min(feof, 2048) butes in the buffer
 
     // Output buffering
-    int16_t outSample[1024 * 2]; // Interleaved L/R
+    int16_t outSample[1152 * 2]; // Interleaved L/R
     int16_t validSamples;
     int16_t curSample;
 

@@ -276,7 +276,7 @@ void FDCT32(int *x, int *d, int offset, int oddBlock, int gb);// __attribute__ (
 /* hufftabs.c */
 extern const HuffTabLookup huffTabLookup[HUFF_PAIRTABS];
 extern const int huffTabOffset[HUFF_PAIRTABS];
-extern const unsigned int /*short*/ huffTable[];
+extern const unsigned short huffTable[];
 extern const unsigned char quadTable[64+16];
 extern const int quadTabOffset[2];
 extern const int quadTabMaxBits[2];
