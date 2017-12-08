@@ -207,7 +207,7 @@ typedef enum _HuffTabType {
 
 typedef struct _HuffTabLookup {
 	int	linBits;
-	HuffTabType tabType;
+	int /*HuffTabType*/ tabType;
 } HuffTabLookup;
 
 typedef struct _IMDCTInfo {

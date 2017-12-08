@@ -697,7 +697,7 @@ const int huffTabOffset[HUFF_PAIRTABS] PROGMEM = {
 	HUFF_OFFSET_24,
 };
 
-const HuffTabLookup huffTabLookup[HUFF_PAIRTABS] = {
+const HuffTabLookup huffTabLookup[HUFF_PAIRTABS] PROGMEM = {
 	{ 0,  noBits },
 	{ 0,  oneShot },
 	{ 0,  oneShot },
@@ -752,5 +752,5 @@ const unsigned char quadTable[64+16] = {
 	0x47, 0x46, 0x45, 0x44, 0x43, 0x42, 0x41, 0x40, 
 };
 
-const int quadTabOffset[2] = {0, 64};
-const int quadTabMaxBits[2] = {6, 4};
+const int quadTabOffset[2] PROGMEM = {0, 64};
+const int quadTabMaxBits[2] PROGMEM = {6, 4};

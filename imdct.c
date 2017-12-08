@@ -44,6 +44,7 @@
 
 #include "coder.h"
 #include "assembly.h"
+#include <pgmspace.h>
 
 /**************************************************************************************
  * Function:    AntiAlias
@@ -254,7 +255,7 @@ static const int c9_4 = 0x7e0e2e32;
 /* format = Q31
  * cos(((0:8) + 0.5) * (pi/18)) 
  */
-static const int c18[9] = {
+static const int c18[9] PROGMEM = {
 	0x7f834ed0, 0x7ba3751d, 0x7401e4c1, 0x68d9f964, 0x5a82799a, 0x496af3e2, 0x36185aee, 0x2120fb83, 0x0b27eb5c, 
 };
 
@@ -331,7 +332,7 @@ static __inline void idct9(int *x)
  */
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wnarrowing"
-const int fastWin36[18] = {
+const int fastWin36[18] PROGMEM = {
 	0x42aace8b, 0xc2e92724, 0x47311c28, 0xc95f619a, 0x4a868feb, 0xd0859d8c,
 	0x4c913b51, 0xd8243ea0, 0x4d413ccc, 0xe0000000, 0x4c913b51, 0xe7dbc161,
 	0x4a868feb, 0xef7a6275, 0x47311c28, 0xf6a09e67, 0x42aace8b, 0xfd16d8dd,

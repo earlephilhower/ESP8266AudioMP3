@@ -114,11 +114,11 @@ int Subband(MP3DecInfo *mp3DecInfo, short *pcmBuf);
 
 /* mp3tabs.c - global ROM tables */
 extern const int samplerateTab[3][3];
-extern const short bitrateTab[3][3][15];
-extern const short samplesPerFrameTab[3][3];
+extern const int/*short*/ bitrateTab[3][3][15];
+extern const int/*short*/ samplesPerFrameTab[3][3];
 extern const short bitsPerSlotTab[3];
-extern const short sideBytesTab[3][2];
-extern const short slotTab[3][3][15];
+extern const int/*short*/ sideBytesTab[3][2];
+extern const int/*short*/ slotTab[3][3][15];
 extern const SFBandTable sfBandTable[3][3];
 
 #endif	/* _MP3COMMON_H */
