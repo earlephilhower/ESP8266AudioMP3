@@ -61,6 +61,8 @@
 #
 #elif defined(_OPENWAVE_SIMULATOR) || defined(_OPENWAVE_ARMULATOR)
 #
+#elif defined (ARDUINO)
+#
 #else
 #error No platform defined. See valid options in mp3dec.h
 #endif

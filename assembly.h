@@ -316,6 +316,56 @@ static __inline Word64 xSAR64(Word64 x, int n)
 }
 //mw
 
+#elif defined(ARDUINO)
+
+static __inline int FASTABS(int x)
+{
+  int sign;
+
+  sign = x >> (sizeof(int) * 8 - 1);
+  x ^= sign;
+  x -= sign;
+
+  return x;
+}
+
+static __inline int CLZ(int x)
+{
+  int numZeros;
+
+  if (!x)
+    return (sizeof(int) * 8);
+
+  numZeros = 0;
+  while (!(x & 0x80000000)) {
+    numZeros++;
+    x <<= 1;
+  }
+
+  return numZeros;
+}
+
+/* returns 64-bit value in [edx:eax] */
+static __inline Word64 MADD64(Word64 sum64, int x, int y)
+{
+    sum64 += (Word64)x * (Word64)y;
+    return sum64;
+}
+
+static __inline__ int MULSHIFT32(int x, int y)
+{
+    int z;
+
+    z = (Word64)x * (Word64)y >> 32;
+
+        return z;
+}
+
+static __inline Word64 SAR64(Word64 x, int n)
+{
+  return x >> n;
+}
+
 #else
 
 #error Unsupported platform in assembly.h

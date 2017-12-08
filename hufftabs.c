@@ -40,6 +40,7 @@
  *
  * hufftabs.c - compressed Huffman code tables
  **************************************************************************************/
+#include <pgmspace.h>
 
 #include "coder.h"
 
@@ -74,7 +75,7 @@
 /* store Huffman codes as one big table plus table of offsets, since some platforms
  *   don't properly support table-of-tables (table of pointers to other const tables)
  */
-const unsigned short huffTable[] = {
+const unsigned int /*short*/ huffTable[] PROGMEM = {
 	/* huffTable01[9] */
 	0xf003, 0x3112, 0x3101, 0x2011, 0x2011, 0x1000, 0x1000, 0x1000, 
 	0x1000, 
@@ -661,7 +662,7 @@ const unsigned short huffTable[] = {
 #define HUFF_OFFSET_16	(580 + HUFF_OFFSET_15)
 #define HUFF_OFFSET_24	(651 + HUFF_OFFSET_16)
 
-const int huffTabOffset[HUFF_PAIRTABS] = {
+const int huffTabOffset[HUFF_PAIRTABS] PROGMEM = {
 	0,          
 	HUFF_OFFSET_01,
 	HUFF_OFFSET_02,
